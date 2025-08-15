@@ -1,4 +1,4 @@
-# Dynamics-365-Customer-Insights-Preference-Center
+# Dynamics 365-Customer Insights Preference Center
 
 ## Custom Preference Centre in Dynamics 365 Customer Insights 
 
