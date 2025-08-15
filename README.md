@@ -1,6 +1,6 @@
 # Dynamics-365-Customer-Insights-Preference-Center
 
-## Custom Dynamics 365 Customer Insights Preference Centre Template
+## Custom Preference Centre in Dynamics 365 Customer Insights 
 
 A fully customisable HTML template for **Microsoft Dynamics 365 Customer Insights – Journeys** Preference Centres, designed to give you more control over branding, layout, and user experience than the default out-of-the-box templates.
 
