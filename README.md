@@ -38,14 +38,6 @@ With this template, you can:
 
 ## 🚀 Getting Started
 
-1. **Clone this repository**  
-   ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
-
-  2.	Open the HTML file in your preferred editor
-	3.	Customise branding
-	•	Update colours, fonts, and spacing in the CSS section
-	•	Replace placeholder text and images
-  4. Upload to Dynamics 365 Customer Insights
-	•	Navigate to Real-time marketing > Preference centres
-	•	Create or edit a template, then paste your custom HTML
+1. **Copy the HTMl code**  
+2.	Open Dynamics 365 Customer Insights 
+3.	Open your default or create a new Preference Center and paste the HTML
