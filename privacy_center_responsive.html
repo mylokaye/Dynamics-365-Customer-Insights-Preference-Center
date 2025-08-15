@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html><head>
-<meta/>
-<meta name="type" type="xrm/designer/setting" value="marketing-designer-content-editor-document"/>
-<meta name="layout-editable" type="xrm/designer/setting" value="marketing-designer-layout-editable"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Norican Privacy Center</title>
-<!-- Browser UI colour for Chrome, Safari, Edge, and mobile browsers -->
-<meta content="#003ea3" name="theme-color"/>
-<meta content="#003ea3" name="apple-mobile-web-app-status-bar-style"/>
-<!-- Performance: preconnect for Google Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<!-- Favicon: SVG primary + PNG fallback -->
-<link href="https://exchangedisclaimers.z6.web.core.windows.net/2025NoricanBIMI.svg" rel="icon" type="image/svg+xml"/>
-<link href="https://i.postimg.cc/rpdxZgmq/Norican-Group-Logo.png" rel="icon" sizes="32x32" type="image/png"/>
-<style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta type="xrm/designer/setting" name="type" value="marketing-designer-content-editor-document">
+
+
+  <title> Privacy Center</title>
+  <!-- Browser UI colour for Chrome, Safari, Edge, and mobile browsers -->
+  <meta name="theme-color" content="#003ea3">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#003ea3">
+
+  <!-- Performance: preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Favicon: SVG primary + PNG fallback -->
+  <link rel="icon" type="image/svg+xml" href="https://exchangedisclaimers.z6.web.core.windows.net/2025NoricanBIMI.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/rpdxZgmq/Norican-Group-Logo.png" />
+
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Roboto', Arial, Helvetica, sans-serif; background: #fff; color: #000; display: flex; flex-direction: column; min-height: 100vh; }
-    .container { display: flex; flex: 1; flex-direction: row; }
-    .left-panel { background: #012f76; color: #fff; flex: 0 0 40%; padding: 40px; display: flex; flex-direction: column; }
+    .container {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      min-height: 100vh;
+    }
+    .left-panel { background: #012f76; color: #fff; flex: 0 0 30%; padding: 40px; display: flex; flex-direction: column; }
+
     .logo { margin-bottom: 30px; }
     .logo img { width: 160px; height: auto; display: block; }
     .copy-content { display: flex; flex-direction: column; justify-content: center; flex: 1; }
@@ -27,13 +39,51 @@
     .subtitle { font-size: 1.2em; margin-bottom: 15px; }
     .subtitle a { color: #00c853; text-decoration: none; }
     .description { font-size: 0.95em; line-height: 1.6; }
-    /* Right panel fills remaining width */
-    .right-panel { flex: 1; background: #fff; display: flex; align-items: center; justify-content: center; border-left: 1px solid #ddd;padding: 50px }
-    .form-placeholder { width: 60%; height: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Courier New', Courier, monospace; font-size: 1.5em; font-weight: 700; }
 
-    .footer { font-size: 0.85em; color: #e6e6e6; padding: 16px 20px; background: #003ea3; text-align: left; }
+    
+    /* Right panel fills remaining width */
+    .right-panel { flex: 0 0 70%; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; border-left: 0px solid #ddd; padding: 0; min-height: 100vh; }
+    .right-panel-flex {
+      width: 90%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      justify-items: center;
+      align-items: center;
+    }
+    .right-panel .top-flex-box {
+      width: 90%;
+      margin: 0 auto 32px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .flex-box { width: 90%; margin: 0 auto; padding: 20px; text-align: center; }
+
+    .footer {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #f7f7f9;
+      padding: 16px 0;
+      text-align: center;
+      z-index: 100;
+    }
     .footer a { color: #ccc; text-decoration: none; margin: 0 10px; }
     .footer a:hover { text-decoration: underline; }
+
+fieldset {
+  border: none;       /* removes the dark box */
+  padding: 0;
+  margin: 0;
+     text-align: left;
+}
+
+legend {
+  padding: 0;
+  font-weight: bold;  /* or any styling you prefer */
+}
 
     /* Modal styles */
     .npc-modal { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0,0,0,0.72); }
@@ -50,348 +100,167 @@
     .npc-btn { padding: 8px 12px; border-radius: 8px; border: 1px solid #d0d0d7; background: #fff; cursor: pointer; font: inherit; }
     .npc-fallback { display: none; padding: 12px 16px; font-size: 0.95em; color: #333; background: #fff8e1; border-top: 1px solid #eee; }
 
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      background: #fff;
+    }
+    .right-panel .top-flex-box {
+      width: 90%;
+      margin: 0 auto 32px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .right-panel-flex {
+      width: 90%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      justify-items: center;
+      align-items: center;
+    }
+    .right-panel-flex .flex-box {
+        border-radius: 8px;
+        padding: 24px;
+        text-align: center;
+        width: 100%;
+        min-width: 0;
+        border: none !important;
+      }
+    @media (max-width: 900px) {
+      .right-panel-flex {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 700px) {
+      .right-panel-flex {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .right-panel .top-flex-box {
+        width: 100%;
+      }
+    }
+
     @media (max-width: 900px) {
       .container { flex-direction: column; height: auto; }
       .left-panel, .right-panel { width: 100%; flex: none; }
       .left-panel { padding: 24px; }
       .logo { text-align: center; }
       .logo img { margin: 0 auto; }
-      .right-panel { border-left: none; border-top: 1px solid #eee; min-height: 340px; padding: 50px 0; }
+      .right-panel { border-left: none; border-top: 1px solid #eee; min-height: 340px; padding: 24px 0; }
       .form-placeholder { width: 90%; height: 300px; }
       h1 { font-size: 2.2em; }
       .subtitle { font-size: 1.05em; }
       .description { font-size: 0.95em; }
-      .footer { margin-top: auto; text-align: center; }
+      .footer { margin-top: auto; text-align: center; position: static; }
       .npc-modal__dialog { width: 94%; height: 88%; margin: 6% auto; }
     }
   </style>
-<style>
-/* Responsive layout for mobile devices */
-@media only screen and (max-width: 600px) {
-    table, th, td {
-        width: 100% !important;
-        display: block;
-        box-sizing: border-box;
-    }
-    th, td {
-        padding: 10px;
-    }
-    input[type="checkbox"], button {
-        width: 100%;
-        box-sizing: border-box;
-    }
-}
-</style></head>
-<body><div class="container">
-<div class="left-panel">
-<div class="logo">
-<a href="https://www.noricangroup.com" rel="noopener" target="_blank" title="Visit Norican Group website">
-<img alt="Norican Group Logo" loading="lazy" src="https://i.postimg.cc/rpdxZgmq/Norican-Group-Logo.png"/>
-</a>
-</div>
-<div class="copy-content">
-<h1>Privacy Center</h1>
-<p class="subtitle">At Norican, your privacy and information is important to us.</p>
-<p class="description">Privacy starts with putting you in control of your data and giving you the tools and information you need to make choices you can feel good about. 
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="logo">
+        <a href="https://www" target="_blank" rel="noopener" title="Visit  website">
+          <img src="https://logos-world.net/wp-content/uploads/2020/09/Microsoft-Logo.png" alt=" Logo" loading="lazy" />
+        </a>
+      </div>
+      <div class="copy-content">
+        <h1>Privacy Center</h1>
+        <p class="subtitle">Welcome to the Privacy Center. Customize the emails you receive from us and view our Privacy Policy and Terms of Service.</p>
+        <p class="description">We are committed to protecting your personal information and ensuring transparency in how we handle your data. Use the links below to view our policies in detail.</p>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="top-flex-box"><h1>Customize the emails you receive</h1></div>
+      <div class="right-panel-flex">
 
+        <div class="flex-box"> 
+          <div data-container="true">
+          </div>
+      <p>Microsoft</p>
 
+      <div>
+        <input id="topicCheckbox-1748423507229" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="05d5c7b3-a030-f011-8c4e-000d3a3848f0;true">
+        <label for="topicCheckbox-1748423507229" id="topicCheckbox-1748423507229-label">Products &amp; Innovations</label>
+      </div>
 
-Through our Privacy Center we encourage you to tailor the emails you receive from Norican and its companies</p>
-</div>
-</div>
-<div class="right-panel">
-<div data-layout="true" data-layout-version="v2" style="margin: auto; max-width: 992px;">
-<div class="columns-equal-class wrap-section" data-section="true" style="margin: 0px; border-radius: 0px;">
-<table cellpadding="0" cellspacing="0" class="outer" style="border-collapse: collapse; width: 992px; display: block; margin: 0px auto;">
-<tbody>
-<tr>
-<th style="padding: 10px 10px 0px; border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; border-radius: 0px;">
-<table cellpadding="0" cellspacing="0" class="containerWrapper tbContainer" style="width: 100%; border-collapse: collapse;">
-<tbody>
-<tr>
-<th class="columnContainer" data-container="true" data-container-width="100" id="container8da7797fab581645032579191" style="min-width: 20px; width: 922px; height: 0px; padding: 0px 25px 25px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="inner ui-sortable" style="min-width: 20px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; background-color: rgba(0, 0, 0, 0); border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; padding: 0px; border-radius: 0px; font-weight: normal;">
-<div data-editorblocktype="Text" style="margin: 0px;"><p style="text-align: center;"><span style="background-color: transparent; text-align: left;">Norican Group is a world-leading provider of technology for the formation and enhancement of metallic parts. Home to five leading international brands: DISA, StrikoWestofen, Wheelabrator, Simpson and digital brand Monitizer.</span></p>
-</div>
-</th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table>
-</div><div class="emptyContainer columns-equal-class wrap-section" data-section="true" style="margin: 25px 0px 0px; border-radius: 0px;"><table align="center" cellpadding="0" cellspacing="0" class="outer" style="width: 993px; display: block;">
-<tbody>
-<tr>
-<th style="padding: 10px; border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; border-radius: 0px;">
-<table cellpadding="0" cellspacing="0" class="containerWrapper tbContainer" style="width: 100%;
-                border-collapse: collapse;">
-<tbody>
-<tr>
-<th class="columnContainer" data-container="true" data-container-width="100" id="containere32b1e12331851748427064905" style="vertical-align:top; min-width: 5px; width: 973px; height: 0px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="inner" style="min-width: 5px; padding: 10px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; font-weight: normal;">
-<div data-editorblocktype="Text" style="margin: 10px;"><p style="text-align: center;"><span style="color: rgb(26, 51, 98); font-size: 24px; font-family:Norican-header-regular, Arial, Verdana, sans-serif;">Customize the emails you receive</span></p></div><div data-editorblocktype="Divider" style="margin: 20px 10px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin:0px; padding: 0px; vertical-align:top;border-top-width: 2px; border-top-style: solid; border-top-color: #e1dfdd;"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div></th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table></div><div class="emptyContainer columns-equal-class wrap-section" data-section="true" style="margin: 10px; border-radius: 0px;"><table align="center" cellpadding="0" cellspacing="0" class="outer" style="width: 972px; display: block;">
-<tbody>
-<tr>
-<th style="padding: 0px; border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; border-radius: 0px;">
-<table cellpadding="0" cellspacing="0" class="containerWrapper tbContainer multi" style="width: 100%;
-                border-collapse: collapse;">
-<tbody>
-<tr>
-<th class="columnContainer" data-container="true" data-container-width="33.33" id="container0ffc624ecd9a51748425278680" style="vertical-align: top; min-width: 5px; width: 323.97px; height: 0px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="columnContainer inner" style="min-width: 5px; padding: 10px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; font-weight: normal;">
-<div data-editorblocktype="Image" style="margin: 10px; padding: 0px;"><div align="Center" class="imageWrapper" data-image-file-id="26ba72b5-b334-f011-8c4e-7c1e5282a8c5" style=""><img height="49" src="https://assets-eur.mkt.dynamics.com/8eb50fd6-655e-41f8-9902-9df123ad6fc7/digitalassets/images/26ba72b5-b334-f011-8c4e-7c1e5282a8c5?ts=638832574924596185" style="max-height: 100%; max-width: 100%; box-sizing: border-box; display: block; border-radius: 0px; width: 247px; height: 49px;" width="247"/></div></div><div data-editorblocktype="Divider" style="margin: 20px 10px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin:0px; padding: 0px; vertical-align:top;border-top-width: 2px; border-top-style: solid; border-top-color: #e1dfdd;"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="8688d48f-a030-f011-8c4e-000d3a3848f0" data-purposename="Norican" data-topicid="05d5c7b3-a030-f011-8c4e-000d3a3848f0" data-topicname="Products &amp; Innovations" style="padding: 10px;">
-<input id="topicCheckbox-1748423507229" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="05d5c7b3-a030-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1748423507229" id="topicCheckbox-1748423507229-label">Products &amp; Innovations</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="8688d48f-a030-f011-8c4e-000d3a3848f0" data-purposename="Norican" data-topicid="8bececbf-a030-f011-8c4e-000d3a3848f0" data-topicname="Events &amp; Webinars" style="padding: 10px;">
-<input id="topicCheckbox-1748423548194" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="8bececbf-a030-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1748423548194" id="topicCheckbox-1748423548194-label">Events &amp; Webinars</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="8688d48f-a030-f011-8c4e-000d3a3848f0" data-purposename="Norican" data-topicid="e96df03f-113b-f011-b4cc-6045bda0024d" data-topicname="Surveys &amp; Focus Groups" style="padding: 10px;">
-<input id="topicCheckbox-1748423626195" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="e96df03f-113b-f011-b4cc-6045bda0024d;true"/>
-<label for="topicCheckbox-1748423626195" id="topicCheckbox-1748423626195-label">Surveys &amp; Focus Groups</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Purpose" data-optinwhenchecked="false" data-purposeid="8688d48f-a030-f011-8c4e-000d3a3848f0" data-purposename="Norican" data-topicid="undefined" data-topicname="undefined" style="padding: 10px;">
-<input id="purposeCheckbox-1748939342598" name="msdynmkt_purposeid;optInWhenChecked" type="checkbox" value="8688d48f-a030-f011-8c4e-000d3a3848f0;false"/>
-<label for="purposeCheckbox-1748939342598" id="purposeCheckbox-1748939342598-label">Unsubscribe</label>
-</div></th>
-</tr>
-</tbody>
-</table>
-</th>
-<th class="columnContainer" data-container="true" data-container-width="33.33" id="container0492b2bac164c1748425278680" style="vertical-align: top; min-width: 5px; width: 323.97px; height: 0px; padding: 0px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="columnContainer inner" style="min-width: 5px; padding: 10px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; background-color: rgba(0, 0, 0, 0); border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; border-radius: 0px; font-weight: normal;">
-<div data-editorblocktype="Image" style="margin: 10px; padding: 0px;"><div align="Center" class="imageWrapper" data-image-file-id="806e1cfb-eb41-f011-8779-7ced8d156579" style=""><img src="https://assets-eur.mkt.dynamics.com/8eb50fd6-655e-41f8-9902-9df123ad6fc7/digitalassets/images/806e1cfb-eb41-f011-8779-7ced8d156579?ts=638847110354405226" style="max-height: 100%; max-width: 100%; box-sizing: border-box; display: block; border-radius: 0px; width: 100px !important;" width="100"/></div></div><div data-editorblocktype="Divider" style="margin: 20px 10px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin:0px; padding: 0px; vertical-align:top;border-top-width: 2px; border-top-style: solid; border-top-color: #e1dfdd;"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="8076b7b9-a130-f011-8c4e-000d3a3848f0" data-purposename="Disa" data-topicid="48fff0d1-a130-f011-8c4e-000d3a3848f0" data-topicname="Products &amp; Innovations" style="padding: 10px;">
-<input id="topicCheckbox-1747217850125" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="48fff0d1-a130-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747217850125" id="topicCheckbox-1747217850125-label">Products &amp; Innovations</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="8076b7b9-a130-f011-8c4e-000d3a3848f0" data-purposename="Disa" data-topicid="f13ff5d7-a130-f011-8c4e-000d3a3848f0" data-topicname="Events &amp; Education" style="padding: 10px;">
-<input id="topicCheckbox-1747217851980" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="f13ff5d7-a130-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747217851980" id="topicCheckbox-1747217851980-label">Events &amp; Webinars</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="8076b7b9-a130-f011-8c4e-000d3a3848f0" data-purposename="DISA" data-topicid="653ec14c-113b-f011-b4cc-6045bda0024d" data-topicname="Surveys &amp; Focus Groups" style="padding: 10px;">
-<input id="topicCheckbox-1748425066244" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="653ec14c-113b-f011-b4cc-6045bda0024d;true"/>
-<label for="topicCheckbox-1748425066244" id="topicCheckbox-1748425066244-label">Surveys &amp; Focus Groups</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Purpose" data-optinwhenchecked="false" data-purposeid="8076b7b9-a130-f011-8c4e-000d3a3848f0" data-purposename="DISA" data-topicid="undefined" data-topicname="undefined" style="padding: 10px;">
-<input id="purposeCheckbox-1748939599786" name="msdynmkt_purposeid;optInWhenChecked" type="checkbox" value="8076b7b9-a130-f011-8c4e-000d3a3848f0;false"/>
-<label for="purposeCheckbox-1748939599786" id="purposeCheckbox-1748939599786-label">Unsubscribe</label>
-</div></th>
-</tr>
-</tbody>
-</table>
-</th>
-<th class="columnContainer" data-container="true" data-container-width="33.33" id="container6c55ecce7673181748425278680" style="vertical-align: top; min-width: 5px; width: 323.97px; height: 0px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="columnContainer inner" style="min-width: 5px; padding: 10px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; font-weight: normal;">
-<div data-editorblocktype="Image" style="margin: 10px; padding: 0px;"><div align="Center" class="imageWrapper" data-image-file-id="e33e3601-ec41-f011-8779-7ced8d156579" style=""><img alt="Logo" height="50" src="https://assets-eur.mkt.dynamics.com/8eb50fd6-655e-41f8-9902-9df123ad6fc7/digitalassets/images/e33e3601-ec41-f011-8779-7ced8d156579?ts=638847110363468095" style="max-height: 100%; max-width: 100%; box-sizing: border-box; display: block; border-radius: 0px; width: 187px; height: 50px;" width="187"/></div></div><div data-editorblocktype="Divider" style="margin: 20px 10px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin:0px; padding: 0px; vertical-align:top;border-top-width: 2px; border-top-style: solid; border-top-color: #e1dfdd;"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="ed3fc5bf-a130-f011-8c4e-000d3a3848f0" data-purposename="Monitizer" data-topicid="0494eddd-a130-f011-8c4e-000d3a3848f0" data-topicname="Products, Innovation &amp; Feedback" style="padding: 10px;">
-<input id="topicCheckbox-1747217854488" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="0494eddd-a130-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747217854488" id="topicCheckbox-1747217854488-label">Products &amp; Innovations </label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="ed3fc5bf-a130-f011-8c4e-000d3a3848f0" data-purposename="Monitizer" data-topicid="aae7e5e3-a130-f011-8c4e-000d3a3848f0" data-topicname="Events &amp; Education" style="padding: 10px;">
-<input id="topicCheckbox-1747217856471" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="aae7e5e3-a130-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747217856471" id="topicCheckbox-1747217856471-label">Events &amp; Webinars</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="ed3fc5bf-a130-f011-8c4e-000d3a3848f0" data-purposename="Monitizer" data-topicid="762ce572-113b-f011-b4cc-6045bda0024d" data-topicname="Surveys &amp; Focus Groups" style="padding: 10px;">
-<input id="topicCheckbox-1748425356906" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="762ce572-113b-f011-b4cc-6045bda0024d;true"/>
-<label for="topicCheckbox-1748425356906" id="topicCheckbox-1748425356906-label">Surveys &amp; Focus Groups</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Purpose" data-optinwhenchecked="false" data-purposeid="ed3fc5bf-a130-f011-8c4e-000d3a3848f0" data-purposename="Monitizer" data-topicid="undefined" data-topicname="undefined" style="padding: 10px;">
-<input id="purposeCheckbox-1748939665517" name="msdynmkt_purposeid;optInWhenChecked" type="checkbox" value="ed3fc5bf-a130-f011-8c4e-000d3a3848f0;false"/>
-<label for="purposeCheckbox-1748939665517" id="purposeCheckbox-1748939665517-label">Unsubscribe</label>
-</div></th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table></div><div class="emptyContainer columns-equal-class wrap-section" data-section="true" style="margin: 10px; border-radius: 0px;"><table align="center" cellpadding="0" cellspacing="0" class="outer" style="width: 972px; display: block;">
-<tbody>
-<tr>
-<th style="padding: 0px; border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; border-radius: 0px;">
-<table cellpadding="0" cellspacing="0" class="containerWrapper tbContainer multi" style="width: 100%;
-                border-collapse: collapse;">
-<tbody>
-<tr>
-<th class="columnContainer" data-container="true" data-container-width="33.33" id="containerb5497179725091748424118903" style="vertical-align: top; min-width: 5px; width: 323.97px; height: 0px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="columnContainer inner" style="min-width: 5px; padding: 10px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; font-weight: normal;">
-<div data-editorblocktype="Image" style="margin: 10px; padding: 0px;"><div align="Center" class="imageWrapper" data-image-file-id="7e6e1cfb-eb41-f011-8779-7ced8d156579" style=""><img height="40" src="https://assets-eur.mkt.dynamics.com/8eb50fd6-655e-41f8-9902-9df123ad6fc7/digitalassets/images/7e6e1cfb-eb41-f011-8779-7ced8d156579?ts=638847110354405226" style="max-height: 100%; max-width: 100%; box-sizing: border-box; display: block; border-radius: 0px; width: 227px; height: 40px;" width="227"/></div></div><div data-editorblocktype="Divider" style="margin: 20px 10px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin:0px; padding: 0px; vertical-align:top;border-top-width: 2px; border-top-style: solid; border-top-color: #e1dfdd;"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="5d57e1c5-a130-f011-8c4e-000d3a3848f0" data-purposename="Simpson" data-topicid="10f0f7ef-a130-f011-8c4e-000d3a3848f0" data-topicname="Products, Innovation &amp; Feedback" style="padding: 10px;">
-<input id="topicCheckbox-1747217858741" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="10f0f7ef-a130-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747217858741" id="topicCheckbox-1747217858741-label">Products &amp; Innovations </label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="5d57e1c5-a130-f011-8c4e-000d3a3848f0" data-purposename="Simpson" data-topicid="ea2ffcf5-a130-f011-8c4e-000d3a3848f0" data-topicname="Events &amp; Education" style="padding: 10px;">
-<input id="topicCheckbox-1747217860860" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="ea2ffcf5-a130-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747217860860" id="topicCheckbox-1747217860860-label">Events &amp; Webinars</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="5d57e1c5-a130-f011-8c4e-000d3a3848f0" data-purposename="StrikoWestofen" data-topicid="3c90d313-113b-f011-b4cc-6045bda0024d" data-topicname="Surveys &amp; Focus Group" style="padding: 10px;">
-<input id="topicCheckbox-1748426017842" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="3c90d313-113b-f011-b4cc-6045bda0024d;true"/>
-<label for="topicCheckbox-1748426017842" id="topicCheckbox-1748426017842-label">Surveys &amp; Focus Groups</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Purpose" data-optinwhenchecked="false" data-purposeid="5d57e1c5-a130-f011-8c4e-000d3a3848f0" data-purposename="StrikoWestofen" data-topicid="undefined" data-topicname="undefined" style="padding: 10px;">
-<input id="purposeCheckbox-1748939680220" name="msdynmkt_purposeid;optInWhenChecked" type="checkbox" value="5d57e1c5-a130-f011-8c4e-000d3a3848f0;false"/>
-<label for="purposeCheckbox-1748939680220" id="purposeCheckbox-1748939680220-label">Unsubscribe</label>
-</div></th>
-</tr>
-</tbody>
-</table>
-</th>
-<th class="columnContainer" data-container="true" data-container-width="33.33" id="container1af038e71383a81748424118903" style="vertical-align: top; min-width: 5px; width: 323.97px; height: 0px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="columnContainer inner" style="min-width: 5px; padding: 10px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; font-weight: normal;">
-<div data-editorblocktype="Image" style="margin: 10px; padding: 0px;"><div align="Center" class="imageWrapper" data-image-file-id="7f6e1cfb-eb41-f011-8779-7ced8d156579" style=""><img height="41" src="https://assets-eur.mkt.dynamics.com/8eb50fd6-655e-41f8-9902-9df123ad6fc7/digitalassets/images/7f6e1cfb-eb41-f011-8779-7ced8d156579?ts=638847110354405226" style="max-height: 100%; max-width: 100%; box-sizing: border-box; display: block; border-radius: 0px; width: 181px; height: 41px;" width="181"/></div></div><div data-editorblocktype="Divider" style="margin: 20px 10px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin:0px; padding: 0px; vertical-align:top;border-top-width: 2px; border-top-style: solid; border-top-color: #e1dfdd;"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="0dabf8cb-a130-f011-8c4e-000d3a3848f0" data-purposename="Wheelabrator" data-topicid="db83f4fb-a130-f011-8c4e-000d3a3848f0" data-topicname="Products, Innovation &amp; Feedback" style="padding: 10px;">
-<input id="topicCheckbox-1747217862959" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="db83f4fb-a130-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747217862959" id="topicCheckbox-1747217862959-label">Products &amp; Innovations </label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="0dabf8cb-a130-f011-8c4e-000d3a3848f0" data-purposename="Wheelabrator" data-topicid="0084f4fb-a130-f011-8c4e-000d3a3848f0" data-topicname="Events &amp; Webinars" style="padding: 10px;">
-<input id="topicCheckbox-1748425648442" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="0084f4fb-a130-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1748425648442" id="topicCheckbox-1748425648442-label">Events &amp; Webinars</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="0dabf8cb-a130-f011-8c4e-000d3a3848f0" data-purposename="Wheelabrator" data-topicid="d49842a4-113b-f011-b4cc-6045bda0024d" data-topicname="Surveys &amp; Focus Groups" style="padding: 10px;">
-<input id="topicCheckbox-1748426286044" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="d49842a4-113b-f011-b4cc-6045bda0024d;true"/>
-<label for="topicCheckbox-1748426286044" id="topicCheckbox-1748426286044-label">Surveys &amp; Focus Groups</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Purpose" data-optinwhenchecked="false" data-purposeid="0dabf8cb-a130-f011-8c4e-000d3a3848f0" data-purposename="Wheelabrator" data-topicid="undefined" data-topicname="undefined" style="padding: 10px;">
-<input id="purposeCheckbox-1748939768029" name="msdynmkt_purposeid;optInWhenChecked" type="checkbox" value="0dabf8cb-a130-f011-8c4e-000d3a3848f0;false"/>
-<label for="purposeCheckbox-1748939768029" id="purposeCheckbox-1748939768029-label">Unsubscribe</label>
-</div></th>
-</tr>
-</tbody>
-</table>
-</th>
-<th class="columnContainer" data-container="true" data-container-width="33.33" id="container52d55b6ee650e1748425416425" style="vertical-align: top; min-width: 5px; width: 323.97px; height: 0px;"><table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="columnContainer inner" style="padding: 10px; min-width: 5px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; font-weight: normal;">
-<div data-editorblocktype="Text" style="margin: 10px 10px 37px;"><p style="text-align: center;"><span style="font-size: 18px; font-weight: bold;">Vibro</span><span style="font-size: 12px;"></span></p></div><div data-editorblocktype="Divider" style="margin: 20px 10px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin:0px; padding: 0px; vertical-align:top;border-top-width: 2px; border-top-style: solid; border-top-color: #e1dfdd;"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="bf4889aa-df36-f011-8c4e-000d3a3848f0" data-purposename="Vibro" data-topicid="449c81b0-df36-f011-8c4e-000d3a3848f0" data-topicname="Products, Innovation &amp; Feedback" style="padding: 10px;">
-<input id="topicCheckbox-1747899623283" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="449c81b0-df36-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747899623283" id="topicCheckbox-1747899623283-label">Products &amp; Innovations </label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="bf4889aa-df36-f011-8c4e-000d3a3848f0" data-purposename="Vibro" data-topicid="439ec8b6-df36-f011-8c4e-000d3a3848f0" data-topicname="Events &amp; Education" style="padding: 10px;">
-<input id="topicCheckbox-1747899639954" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="439ec8b6-df36-f011-8c4e-000d3a3848f0;true"/>
-<label for="topicCheckbox-1747899639954" id="topicCheckbox-1747899639954-label">Events &amp; Webinars</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Topic" data-optinwhenchecked="true" data-purposeid="bf4889aa-df36-f011-8c4e-000d3a3848f0" data-purposename="Vibro" data-topicid="f3c81c9e-113b-f011-b4cc-6045bda0024d" data-topicname="Surveys &amp; Focus Groups" style="padding: 10px;">
-<input id="topicCheckbox-1748426302643" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="f3c81c9e-113b-f011-b4cc-6045bda0024d;true"/>
-<label for="topicCheckbox-1748426302643" id="topicCheckbox-1748426302643-label">Surveys &amp; Focus Groups</label>
-</div><div class="preferenceCenterCheckbox" data-editorblocktype="Purpose" data-optinwhenchecked="false" data-purposeid="bf4889aa-df36-f011-8c4e-000d3a3848f0" data-purposename="Vibro" data-topicid="undefined" data-topicname="undefined" style="padding: 10px;">
-<input id="purposeCheckbox-1748939777810" name="msdynmkt_purposeid;optInWhenChecked" type="checkbox" value="bf4889aa-df36-f011-8c4e-000d3a3848f0;false"/>
-<label for="purposeCheckbox-1748939777810" id="purposeCheckbox-1748939777810-label">Unsubscribe</label>
-</div></th>
-</tr>
-</tbody>
-</table></th></tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table></div><div class="emptyContainer columns-equal-class wrap-section" data-section="true" style="margin: 10px; border-radius: 0px;"><table align="center" cellpadding="0" cellspacing="0" class="outer" style="width: 972px; display: block;">
-<tbody>
-<tr>
-<th style="padding: 10px; border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; border-radius: 0px;">
-<table cellpadding="0" cellspacing="0" class="containerWrapper tbContainer" style="width: 100%;
-                border-collapse: collapse;">
-<tbody>
-<tr>
-<th class="columnContainer" data-container="true" data-container-width="100" id="container22808c1457f2a81749469985115" style="vertical-align: top; min-width: 5px; width: 952px; height: 0px; padding: 0px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="inner" style="min-width: 5px; padding: 10px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; background-color: rgba(0, 0, 0, 0); border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; border-radius: 0px; font-weight: normal;">
-<div data-editorblocktype="Text" style="margin: 10px;"><p style="text-align: center;"><span style="color: rgb(26, 51, 98); font-size: 24px; font-family: Norican-header-regularArial, Verdana, sans-serif;">Your information</span></p></div><div data-editorblocktype="Divider" style="margin: 20px 10px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin:0px; padding: 0px; vertical-align:top;border-top-width: 2px; border-top-style: solid; border-top-color: #e1dfdd;"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div><div class="preferenceCenterBlock" data-channels="Email" data-customchannelname="" data-editorblocktype="ContactOptIn" style="padding: 0px 0px 20px;">
-<label class="contactOptInLabel" for="contactOptInDropdown" id="contactOptInDropdown-label"><br/></label>
-<div class="contactPoint" data-customchannelname="" name="channels" style="font-family: Norican-body, Verdana, Arial, sans-serif; text-align: center; display: block;" value="Email">someone@example.com</div>
-<select class="contactPoint" data-customchannelname="" id="contactOptInDropdown" style="display: none;"></select>
-</div><div data-editorblocktype="Text" style="margin: 10px;"><p style="text-align: center;"><span style="font-family: Norican-body, Verdana, Arial, sans-serif;; font-style: italic; font-size: 16px;">If you no longer wish to receive emails from one of our brands, you're welcome to unsubscribe.</span></p><p style="text-align: center;"><span style="font-style: italic; font-size: 16px;">You'll still receive 'Transactional' emails, which are necessary for legal or regulatory updates where appropriate.</span></p></div><div data-editorblocktype="Divider" style="margin: 20px 10px; padding: 0px;"><div align="center" class="dividerWrapper"><table cellpadding="0" cellspacing="0" class="" role="presentation" style="padding: 0px; margin: 0px; width: 100%; border-collapse: collapse;"><tbody><tr style="padding: 0px;"><th style="margin: 0px; padding: 0px; vertical-align: top; border-top: 2px solid rgb(255, 255, 255);"><p style="margin: 0px; padding: 0px; line-height: 0px; width: 100%;"><span><!--[if gte mso 9]><br/><![endif]--> </span></p></th></tr></tbody></table></div></div><div align="center" data-editorblocktype="SubmitButton">
-<button aria-label="Update preferences" class="submitButton" style="border-color: rgba(255, 255, 255, 0); border-width: 8px; border-style: solid; background-color: rgb(26, 51, 98); font-size: 22px; border-radius: 4px; color: rgb(255, 255, 255);" type="submit">
-<span style="font-family: Arial, Verdana, sans-serif; text-decoration: none;">Update preferences</span></button>
-</div></th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table></div><div class="emptyContainer columns-equal-class wrap-section" data-section="true" style="margin: 10px; border-radius: 0px;"><table align="center" cellpadding="0" cellspacing="0" class="outer" style="width: 972px; display: block;">
-<tbody>
-<tr>
-<th style="padding: 10px; border-color: rgb(0, 0, 0); border-width: 0px; border-style: none; border-radius: 0px;">
-<table cellpadding="0" cellspacing="0" class="containerWrapper tbContainer" style="width: 100%;
-                border-collapse: collapse;">
-<tbody>
-<tr>
-<th class="columnContainer" data-container="true" data-container-width="100" id="containerfff587f7959b81749469080747" style="vertical-align: top; min-width: 5px; width: 952px; height: 0px;">
-<table cellpadding="0" cellspacing="0" style="height: 100%;" width="100%">
-<tbody>
-<tr>
-<th class="inner" style="min-width: 5px; padding: 10px; vertical-align: top; word-wrap: break-word; word-break: break-word; word-wrap: break-word; word-break: break-word; font-weight: normal;">
-<div data-editorblocktype="Text" style="margin: 50px 10px 10px;"><p><span style="font-size: 14px;">Norican A/S is the data controller responsible for processing your personal data. Central Business Register No: 36 45 87 71. Højager 8, 2630 Taastrup, Denmark. Your personal data is processed in accordance with Article 6(1)(a) of the GDPR, as described in the ​</span><a href="https://www.noricangroup.com/privacy?mtm_campaign=Privacy Policy&amp;mtm_source=Website&amp;mtm_medium=CRM&amp;mtm_placement=Form"><span style="font-size: 14px;">Norican Privacy Policy</span></a><span style="font-size: 14px;">. You can update your email preferences at any time by visiting the Norican Privacy Center - there’s a link included in every email we send. To edit or remove the information we hold about you, email: ​</span><a href="mailto:dpa@noricangroup.com?subject=Privacy%20Policy"><span style="font-size: 14px;">dpa@noricangroup.com</span></a><span style="font-size: 14px;">.</span></p></div><div data-editorblocktype="Image" style="margin: 0px; padding: 0px;"><div align="Center" class="imageWrapper" data-image-file-id="8a6fac91-c53f-f011-877a-7c1e5282a8c5" style=""><img src="https://assets-eur.mkt.dynamics.com/8eb50fd6-655e-41f8-9902-9df123ad6fc7/digitalassets/images/8a6fac91-c53f-f011-877a-7c1e5282a8c5?ts=638844746319533560" style="max-height: 100%; max-width: 100%; box-sizing: border-box; display: block; border-radius: 0px;"/></div></div></th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table>
-</th>
-</tr>
-</tbody>
-</table></div>
-</div>
-<ul></ul>
-</div>
-</div><div class="footer">
-    © Norican Group <span id="footerYear"></span>. DISA Holdings A/S, Højager 8, DK-2630 Taastrup, Denmark. <a href="#" id="legalLink" rel="noopener" title="View legal policies">Legal</a>
-</div><script>
+      <div>
+        <input id="topicCheckbox-1748423548194" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="8bececbf-a030-f011-8c4e-000d3a3848f0;true">
+        <label for="topicCheckbox-1748423548194" id="topicCheckbox-1748423548194-label">Events &amp; Webinars</label>
+      </div>
+
+      <div>
+        <input id="topicCheckbox-1748423626195" name="msdynmkt_topicid;optInWhenChecked" type="checkbox" value="e96df03f-113b-f011-b4cc-6045bda0024d;true">
+        <label for="topicCheckbox-1748423626195" id="topicCheckbox-1748423626195-label">Surveys &amp; Focus Groups</label>
+      </div>
+
+      <div>
+        <input id="purposeCheckbox-1748939342598" name="msdynmkt_purposeid;optInWhenChecked" type="checkbox" value="8688d48f-a030-f011-8c4e-000d3a3848f0;false">
+        <label for="purposeCheckbox-1748939342598" id="purposeCheckbox-1748939342598-label">Unsubscribe</label>
+      </div>
+    </fieldset></div>
+
+        <div class="flex-box">  <div data-container="true">
+          </div></div>
+
+        <div class="flex-box"><div data-container="true">
+          </div></div>
+
+        <div class="flex-box"><div data-container="true">
+          </div></div>
+
+        <div class="flex-box"><div data-container="true">
+          </div></div>
+
+        <div class="flex-box"><div data-container="true">
+          </div></div>
+
+        <div class="flex-box"><div data-container="true">
+          </div></div>
+
+        <div class="flex-box"><div data-container="true">
+          </div></div>
+
+        <div class="flex-box"><div data-container="true">
+          </div></div>
+      </div>
+      <div class="top-flex-box" style="margin-top:32px;">Content goes here</div>
+    </div>
+  </div>
+  <div class="footer">
+    © Microsoft <span id="footerYear"></span>. 1 Microsoft Way, Redmond, Washington, 98052-6399, United States.<a id="legalLink" href="#" rel="noopener" title="View legal policies">Legal</a>
+  </div>
+<script>
   document.getElementById('footerYear').textContent = new Date().getFullYear();
-</script><div aria-labelledby="npc-modal-title" aria-modal="true" class="npc-modal" id="npc-modal" role="dialog">
-<div class="npc-modal__dialog">
-<div class="npc-modal__header">
-<div aria-live="polite" class="npc-modal__title" id="npc-modal-title"></div>
-<button aria-label="Close" class="npc-modal__close" id="npc-modal-close">×</button>
-</div>
-<!-- Tabs are hidden by default and shown only for 'Legal' entry point -->
-<div aria-label="Policy tabs" class="npc-modal__tabs" role="tablist">
-<button aria-controls="npc-modal-iframe" aria-selected="true" class="npc-tab" id="tab-privacy" role="tab">Privacy</button>
-<button aria-controls="npc-modal-iframe" aria-selected="false" class="npc-tab" id="tab-terms" role="tab" tabindex="-1">Terms</button>
-<button aria-controls="npc-modal-iframe" aria-selected="false" class="npc-tab" id="tab-cookies" role="tab" tabindex="-1">Cookies</button>
-</div>
-<div class="npc-fallback" id="npc-fallback" role="note">
+</script>
+  <div id="npc-modal" class="npc-modal" role="dialog" aria-modal="true" aria-labelledby="npc-modal-title">
+    <div class="npc-modal__dialog">
+      <div class="npc-modal__header">
+        <div id="npc-modal-title" class="npc-modal__title" aria-live="polite"></div>
+        <button id="npc-modal-close" class="npc-modal__close" aria-label="Close">×</button>
+      </div>
+      <!-- Tabs are hidden by default and shown only for 'Legal' entry point -->
+      <div class="npc-modal__tabs" role="tablist" aria-label="Policy tabs">
+        <button class="npc-tab" role="tab" id="tab-privacy" aria-controls="npc-modal-iframe" aria-selected="true">Privacy</button>
+        <button class="npc-tab" role="tab" id="tab-terms" aria-controls="npc-modal-iframe" aria-selected="false" tabindex="-1">Terms</button>
+        <button class="npc-tab" role="tab" id="tab-cookies" aria-controls="npc-modal-iframe" aria-selected="false" tabindex="-1">Cookies</button>
+      </div>
+      <iframe id="npc-modal-iframe" class="npc-modal__iframe" role="document" aria-label="Policy content"></iframe>
+      <div class="npc-fallback" id="npc-fallback" role="note">
         This site may block viewing inside an embedded window. Use <strong>Open in New Tab</strong> if the content doesn’t appear.
       </div>
-<div aria-label="Modal actions" class="npc-modal__toolbar" role="toolbar">
-<button aria-label="Open current policy in a new browser tab" class="npc-btn" id="npc-open-new-tab">Open in New Tab</button>
-</div>
-</div>
-</div><script>
+      <div class="npc-modal__toolbar" role="toolbar" aria-label="Modal actions">
+        <button id="npc-open-new-tab" class="npc-btn" aria-label="Open current policy in a new browser tab">Open in New Tab</button>
+      </div>
+    </div>
+  </div>
+<script>
 (function () {
   if (window.__npcModalInit) return; window.__npcModalInit = true;
   const modal = document.getElementById('npc-modal');
@@ -405,17 +274,17 @@ Through our Privacy Center we encourage you to tailor the emails you receive fro
   const tabs = {
     privacy: {
       el: document.getElementById('tab-privacy'),
-      url: 'https://www.noricangroup.com/privacy?utm_source=Dynamics365&utm_medium=PreferenceCenter&utm_campaign=FromEamil',
+      url: 'https://www.microsoft.com/en-gb/?utm_source=Dynamics365&utm_medium=PreferenceCenter&utm_campaign=FromEamil',
       title: 'Privacy Policy'
     },
     terms: {
       el: document.getElementById('tab-terms'),
-      url: 'https://www.noricangroup.com/t-and-cs/website-terms-of-use?utm_source=Dynamics365&utm_medium=PreferenceCenter&utm_campaign=FromEamil',
+      url: 'https://www.microsoft.com/en-gb/?utm_source=Dynamics365&utm_medium=PreferenceCenter&utm_campaign=FromEamil',
       title: 'Terms & Conditions'
     },
     cookies: {
       el: document.getElementById('tab-cookies'),
-      url: 'https://www.noricangroup.com/cookies?utm_source=Dynamics365&utm_medium=PreferenceCenter&utm_campaign=FromEamil',
+      url: 'https://www.microsoft.com/en-gb/?utm_source=Dynamics365&utm_medium=PreferenceCenter&utm_campaign=FromEamil',
       title: 'Cookie Policy'
     }
   };
@@ -505,4 +374,6 @@ Through our Privacy Center we encourage you to tailor the emails you receive fro
     }
   });
 })();
-</script></body></html>
+</script>
+</body>
+</html>
